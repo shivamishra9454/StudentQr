@@ -49,6 +49,17 @@ import java.io.Writer;
 
 
 public class SignInActivity extends ActionBarActivity {
+    private final String NAMESPACE = "http://aruncyberspace.blogspot.in";
+    private final String METHOD_NAME = "isAuthenticatedUser";
+    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+    boolean isAsyncTaskCompleted = false;
+    String userName;
+    String password;
+    String TAG = "AMSS";
+    User user = null;
+    String userXML = "";
+    String serverAddress = "";
+    boolean validated = false;
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView, mServerEditText;
     private ProgressBar mProgressView;
@@ -57,20 +68,9 @@ public class SignInActivity extends ActionBarActivity {
     // private TextView mErrorMessageView;
     private Button btnSignin, btnSignup;
     private ImageView mImageView;
-
-    boolean isAsyncTaskCompleted = false;
-    private final String NAMESPACE = "http://aruncyberspace.blogspot.in";
     //private final String URL = "http://192.168.0.5/AMS/AttendanceMgmtSystemBackEndService.svc";
     private String URLFORMAT = "http://%s/AMSWebServices/AMSService/Authenticate/";
     private String URL = "http://qrapp-qrattendfirst.7e14.starter-us-west-2.openshiftapps.com/AMSWebServices/AMSService/Authenticate/";
-    private final String METHOD_NAME = "isAuthenticatedUser";
-    String userName;
-    String password;
-    String TAG = "AMSS";
-    User user = null;
-    String userXML = "";
-    String serverAddress = "";
-    boolean validated = false;
 
     public void onSignUpClick(View view) {
         Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
@@ -98,11 +98,10 @@ public class SignInActivity extends ActionBarActivity {
         mImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (clickCount +1 == 3) {
+                if (clickCount + 1 == 3) {
                     showInputDialog();
-                    clickCount= 0;
-                }
-                else if(clickCount+1 < 3)
+                    clickCount = 0;
+                } else if (clickCount + 1 < 3)
                     clickCount++;
 
             }
@@ -135,6 +134,7 @@ public class SignInActivity extends ActionBarActivity {
         });
 
     }
+
     protected void showInputDialog() {
 
         // get prompts.xml view
@@ -148,10 +148,10 @@ public class SignInActivity extends ActionBarActivity {
         alertDialogBuilder.setCancelable(false)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                       // resultText.setText("Hello, " + editText.getText());
-                        String urlresult = String.format(URLFORMAT,editText.getText());
+                        // resultText.setText("Hello, " + editText.getText());
+                        String urlresult = String.format(URLFORMAT, editText.getText());
                         URL = urlresult;
-                        Log.w(TAG,"url result "+urlresult);
+                        Log.w(TAG, "url result " + urlresult);
                     }
                 })
                 .setNegativeButton("Cancel",
@@ -179,10 +179,10 @@ public class SignInActivity extends ActionBarActivity {
             HttpEntity entity = httpResponse.getEntity();
             Log.w("AMS-S", httpResponse.getStatusLine().toString());
 //            if(httpResponse.getStatusLine().toString().equals("HTTP/1.1 200 OK")) {
-                if (entity != null) {
-                    result = EntityUtils.toString(entity);
-                    Log.w("AMS-S", "Entity : " + result);
-                }
+            if (entity != null) {
+                result = EntityUtils.toString(entity);
+                Log.w("AMS-S", "Entity : " + result);
+            }
 //            }
 //            else{
 //                Toast.makeText(getApplicationContext(),"Connection Error",Toast.LENGTH_SHORT).show();
@@ -195,6 +195,7 @@ public class SignInActivity extends ActionBarActivity {
 
         return result;
     }
+
     private class AsyncCallWS extends AsyncTask<String, Void, Void> {
         @Override
         protected Void doInBackground(String... params) {
@@ -211,7 +212,7 @@ public class SignInActivity extends ActionBarActivity {
             Log.i(TAG, "onPostExecute");
             mProgressView.setVisibility(View.GONE);
             Serializer serializer = new Persister();
-            if(!userXML.equals("")) {
+            if (!userXML.equals("")) {
                 try {
                     user = new User();
                     user = serializer.read(User.class, userXML);
@@ -233,8 +234,8 @@ public class SignInActivity extends ActionBarActivity {
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
                 }
-            }
-            else Toast.makeText(getApplicationContext(),"Connection Error",Toast.LENGTH_SHORT).show();
+            } else
+                Toast.makeText(getApplicationContext(), "Connection Error", Toast.LENGTH_SHORT).show();
         }
 
 
@@ -242,7 +243,7 @@ public class SignInActivity extends ActionBarActivity {
         protected void onPreExecute() {
             Log.i(TAG, "onPreExecute");
             mProgressView.setVisibility(View.VISIBLE);
-            if (mEmailView.getText().length() != 0 && mEmailView.getText().toString() != "") {
+            if (mEmailView.getText().length() != 0 && mEmailView.getText().toString() != "" && mEmailView.getText().toString().matches(emailPattern)) {
                 userName = mEmailView.getText().toString();
                 if (mPasswordView.getText().length() != 0 && mPasswordView.getText().toString() != "") {
 

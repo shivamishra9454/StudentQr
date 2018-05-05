@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    buildToolsVersion "27.0.3"
 
     defaultConfig {
         applicationId "com.blogspot.aruncyberspace.attendance_management_system_student"
@@ -20,10 +20,11 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile files('libs/ksoap2-android-assembly-3.4.0-jar-with-dependencies.jar')
-    compile files('libs/simple-xml-2.7.1.jar')
-    compile 'com.google.zxing:zxing-parent:3.2.0'
-    compile 'org.jbundle.util.osgi.wrapped:org.jbundle.util.osgi.wrapped.org.apache.http.client:4.1.2'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    api 'com.android.support:appcompat-v7:25.4.0'
+    api files('libs/ksoap2-android-assembly-3.4.0-jar-with-dependencies.jar')
+    api files('libs/simple-xml-2.7.1.jar')
+    api 'com.google.zxing:zxing-parent:3.3.0'
+    api 'org.jbundle.util.osgi.wrapped:org.jbundle.util.osgi.wrapped.org.apache.http.client:4.1.2'
 }

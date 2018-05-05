@@ -7,7 +7,7 @@
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
 
-    <string name="enter_email">Enter Email!</string>
+    <string name="enter_email">Enter valid Email!</string>
     <string name="enter_password">Enter Password!</string>
 
     <string name="action_sign_in">Sign in</string>
@@ -40,7 +40,7 @@
 
     <string name="error_enter_first_name">Enter First Name</string>
     <string name="error_enter_last_name">Enter Last Name</string>
-    <string name="error_enter_email">Enter Email</string>
+    <string name="error_enter_email">Enter valid Email</string>
     <string name="error_enter_password">Enter Password</string>
     <string name="error_enter_confirm_password">Enter Confirm Password</string>
     <string name="error_enter_password_not_match">Password Does not Match</string>

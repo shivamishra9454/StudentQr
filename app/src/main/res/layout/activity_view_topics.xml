@@ -14,7 +14,11 @@
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
         tools:context="com.blogspot.aruncyberspace.attendance_management_system_student.ViewTopics">
-        <ProgressBar android:id="@+id/login_progress" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+
+        <ProgressBar
+            android:id="@+id/login_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
         <ImageView
             android:id="@+id/imageView"
@@ -32,19 +36,23 @@
 
             <TableRow>
 
-                <TextView android:text="Course:" android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+                <TextView
+                    android:text="Course:"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
-                <Spinner android:id="@+id/courseSelector"
-                    android:layout_gravity="left"/>
+                <Spinner
+                    android:id="@+id/courseSelector"
+                    android:layout_gravity="left" />
             </TableRow>
 
         </TableLayout>
 
 
         <TableLayout
-            android:id="@+id/tableLayout1" android:layout_below="@+id/tableLayout"
+            android:id="@+id/tableLayout1"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tableLayout">
 
 
         </TableLayout>

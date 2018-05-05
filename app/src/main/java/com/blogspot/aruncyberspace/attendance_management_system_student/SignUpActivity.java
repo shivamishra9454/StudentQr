@@ -39,6 +39,8 @@ public class SignUpActivity extends ActionBarActivity {
     String TAG="AMS";
     String response;
     String address="0";
+
+    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     //  private String URLFORMAT = "http://%s/DistributedMeetingSchedulerWebService/DMSWebService/Register/";
     private String URL = "http://qrapp-qrattendfirst.7e14.starter-us-west-2.openshiftapps.com/AMSWebServices/AMSService/Register/";
 
@@ -233,7 +235,7 @@ public class SignUpActivity extends ActionBarActivity {
                 if (mLastNameView.getText().length() != 0 && mLastNameView.getText().toString() != "") {
 
                     user.setLastName(mLastNameView.getText().toString());
-                    if (mEmailView.getText().length() != 0 && mEmailView.getText().toString() != "") {
+                    if (mEmailView.getText().length() != 0 && mEmailView.getText().toString() != "" && mEmailView.getText().toString().trim().matches(emailPattern)) {
                         user.setMavEmail(mEmailView.getText().toString());
                         if (mPasswordView.getText().length() != 0 && mPasswordView.getText().toString() != "") {
 

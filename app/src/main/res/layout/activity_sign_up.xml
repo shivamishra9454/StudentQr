@@ -22,9 +22,14 @@
             android:layout_marginBottom="3dp"
             android:padding="15dp"
             android:src="@mipmap/logo_small" />
+
         <ProgressBar
-            android:layout_width="wrap_content" android:padding="10dp" android:layout_gravity="center"
-            android:layout_height="wrap_content" android:id="@+id/login_progress" android:visibility="gone" />
+            android:id="@+id/login_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:visibility="gone" />
 
         <EditText
             android:id="@+id/txtUserName"
@@ -95,6 +100,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
+            android:background="@drawable/custom_button"
             android:padding="15dp"
             android:text="@string/btn_mav_sign_up_text" />
 
